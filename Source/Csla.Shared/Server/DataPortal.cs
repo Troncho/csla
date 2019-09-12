@@ -683,7 +683,7 @@ namespace Csla.Server
 
 #endregion
 
-#region Authorize
+    #region Authorize
 
     private static object _syncRoot = new object();
     private static IAuthorizeDataPortal _authorizer = null;
@@ -723,7 +723,7 @@ namespace Csla.Server
       { /* default is to allow all requests */ }
     }
 
-#endregion
+    #endregion
 
     internal static DataPortalException NewDataPortalException(string message, Exception innerException, object businessObject)
     {
@@ -733,6 +733,64 @@ namespace Csla.Server
       throw new DataPortalException(
         message,
         innerException, new DataPortalResult(businessObject));
+    }
+
+    /// <summary>
+    /// Converts a params array to a single 
+    /// serializable criteria value.
+    /// </summary>
+    /// <param name="criteria">Params array</param>
+    /// <returns></returns>
+    public static object GetCriteriaFromArray(params object[] criteria)
+    {
+      var clength = 0;
+      if (criteria != null)
+        clength = criteria.GetLength(0);
+
+      if (criteria == null || (clength == 1 && criteria[0] == null))
+        return NullCriteria.Instance;
+      else if (clength == 0)
+        return EmptyCriteria.Instance;
+      else if (clength == 1)
+        return criteria[0];
+      else
+        return new Core.MobileList<object>(criteria);
+    }
+
+    /// <summary>
+    /// Converts a single serializable criteria value
+    /// into an array of type object.
+    /// </summary>
+    /// <param name="criteria">Single serializble criteria value</param>
+    /// <returns></returns>
+    public static object[] GetCriteriaArray(object criteria)
+    {
+      if (criteria == null)
+        return null;
+      else if (criteria is EmptyCriteria)
+#if NET40 || NET45
+        return new object[] { };
+#else
+        return Array.Empty<object>();
+#endif
+      else if (criteria is NullCriteria)
+        return new object[] { null };
+      else if (criteria is object[] array)
+      {
+        var clength = array.GetLength(0);
+        if (clength == 1 && array[0] is EmptyCriteria)
+#if NET40 || NET45
+          return new object[] { };
+#else
+          return Array.Empty<object>();
+#endif
+        else
+          return array;
+      }
+      else if (criteria is Core.MobileList<object> list)
+        return list.ToArray();
+      else
+        return new object[] { criteria };
     }
   }
 }

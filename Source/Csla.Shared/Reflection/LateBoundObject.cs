@@ -162,18 +162,18 @@ namespace Csla.Reflection
     /// otherwise synchronously invokes the method.
     /// </summary>
     /// <param name="isSync">Is client calling this synchronously</param>
-    /// <param name="attributeType">Data portal operation attribute</param>
     /// <param name="parameters">
     /// Parameters to pass to method.
     /// </param>
-    public async Task CallMethodTryAsyncDI(bool isSync, Type attributeType, params object[] parameters)
+    public async Task CallMethodTryAsyncDI<T>(bool isSync, params object[] parameters)
+      where T : DataPortalOperationAttribute
     {
-      var method = ServiceProviderMethodCaller.FindDataPortalMethod(
-        Instance, attributeType, parameters);
+      var method = ServiceProviderMethodCaller.FindDataPortalMethod<T>(
+        Instance, parameters);
       try
       {
         Utilities.ThrowIfAsyncMethodOnSyncClient(isSync, method);
-        await ServiceProviderMethodCaller.CallMethodTryAsync(Instance, method, parameters);
+        await ServiceProviderMethodCaller.CallMethodTryAsync(Instance, method, parameters).ConfigureAwait(false);
       }
       catch (CallMethodException)
       {

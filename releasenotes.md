@@ -1,4 +1,8 @@
-This is a pre-release of CSLA .NET version 5.0.0.
+# CSLA .NET version 5.0.0 pre-release
+
+CSLA 5 is a big release with some breaking changes, some major enhancements, and with new support for .NET Core 3 and WebAssembly (Blazor, etc.).
+
+## Change List
 
 This release contains numerous potential breaking changes so please pay attention to the ⚠ (possible) and 🛑 (likely) breaking symbols.
 
@@ -16,10 +20,12 @@ Some changes were made to address common issues people face using CSLA. I've tri
 * Bump Xamarin.Forms from 3.4.0.1008975 to 4.1.0.673156 in /Source
 * Bump Microsoft.EntityFrameworkCore from 2.2.0 to 2.2.6 in /Source
 * Bump Microsoft.CodeAnalysis.Analyzers from 2.6.3 to 2.9.4 in /Source
-* Bump Microsoft.NETCore.UniversalWindowsPlatform in /Source
+* Bump Microsoft.NETCore.UniversalWindowsPlatform to 6.2.9 in /Source
 
-### Data Portal 
+### Data Portal
 
+* [#1066](https://github.com/MarimerLLC/csla/issues/1066) Implement RabbitMQ data portal (`Csla.Channels.RabbitMq`) 🎉
+* [#1140](https://github.com/MarimerLLC/csla/issues/1140) Implement gRPC data portal (`Csla.Channels.Grpc`) 🎉
 * [#1176](https://github.com/MarimerLLC/csla/issues/1176) Enable passing multiple parameters to root DP methods (i.e. `FetchAsync`) 🎉
 * [#787](https://github.com/MarimerLLC/csla/issues/787) Enable per-method dependency injection for DP_XYZ and Child_XYZ method params 🎉
 * [#1102](https://github.com/MarimerLLC/csla/issues/1102) Eliminate hard-coded DP_XYZ and Child_XYZ method names 🎉
@@ -45,6 +51,7 @@ Some changes were made to address common issues people face using CSLA. I've tri
 * [#974](https://github.com/marimerllc/csla/issues/974) Rename DbProvider config key to CslaDbProvider 🛑
 * [#963](https://github.com/marimerllc/csla/issues/963) Mark `RelationshipTypes.Child` as Obsolete ⚠
 * [#1117](https://github.com/marimerllc/csla/issues/1117) Fix issue where string properties would ignore explicit null default value
+* [#1209](https://github.com/marimerllc/csla/issues/1209) Add `ObjectAuthorizationRules` attribute so `AddObjectAuthorizationRules` is no longer a "magic name" method 🎉
 
 ### Analyzers
 
@@ -52,11 +59,18 @@ Some changes were made to address common issues people face using CSLA. I've tri
 * [#804](https://github.com/marimerllc/csla/issues/804) Update analyzers to modern project style and .NET Standard 1.3 (now requires Visual Studio 2017 or higher) ⚠
 * [#623](https://github.com/marimerllc/csla/issues/623) Fix issue where analyzer would incorrectly flag an issue with serializable attributes 🎉
 * [#925](https://github.com/marimerllc/csla/issues/925) Create analyzer to flag use of `new` keyword when creating domain objects (require use of data portal)
-* [#1091](https://github.com/marimerllc/csla/issues/1091) Update/cleanup analyzer code. 
+* [#1091](https://github.com/marimerllc/csla/issues/1091) Update/cleanup analyzer code
+
+### Blazor and WebAssembly
+
+* [#1283](https://github.com/marimerllc/csla/issues/1283) Add Blazor validation component
+* [#1142](https://github.com/marimerllc/csla/issues/1142) Add UI helper support for client-side Blazor and WebAssembly 🎉
+* [#1270](https://github.com/marimerllc/csla/issues/1270) Add `UnoExample` sample
 
 ### Xamarin
 
 * [#1010](https://github.com/marimerllc/csla/issues/1010) Fix issue where `ApplicationContext.User` wasn't persisted during async operations
+* [#1168](https://github.com/MarimerLLC/csla/issues/1168) Mark old-style viewmodel async methods as obsolete and modernize class overall 🛑
 
 ### Data Access
 
@@ -64,16 +78,30 @@ Some changes were made to address common issues people face using CSLA. I've tri
 * [#1150](https://github.com/marimerllc/csla/issues/1150) Add support for `Microsoft.Data.SqlClient` via new `Csla.Data.SqlClient` package 🎉
 * [#981](https://github.com/marimerllc/csla/issues/981) Move support for `System.Data.SqlClient` into new `Csla.Data.SqlClient.Fx` package - it is no longer in the core of CSLA 🛑
 
+### ASP.NET Core
+
+* [#905](https://github.com/MarimerLLC/csla/issues/905) Add support for ASP.NET Core MVC validation mechanism
+* [#649](https://github.com/MarimerLLC/csla/issues/649) Implement CSLA permission requirement handler
+
+### WPF
+
+* [#1235](https://github.com/MarimerLLC/csla/issues/1235) Bring `Csla.Xaml` for WPF forward to .NET Core 3
+* [#1168](https://github.com/MarimerLLC/csla/issues/1168) Mark old-style viewmodel async methods as obsolete and modernize class overall 🛑
+
+### Windows Forms
+
+* [#1234](https://github.com/MarimerLLC/csla/issues/1234) Bring `Csla.Windows` forward to .NET Core 3
+
 ### Technical Debt
 
 * [#1115](https://github.com/marimerllc/csla/issues/1115)Remove private constructors from templates
 * [#968](https://github.com/marimerllc/csla/issues/968) Remove ApplicationContext.IsInRoleProvider property ⚠
-* [#1053](https://github.com/marimerllc/csla/issues/1053) Update nuspec files to use license element 
+* [#1053](https://github.com/marimerllc/csla/issues/1053) Update nuspec files to use license element
 * [#1070](https://github.com/marimerllc/csla/issues/1070) Remove unused legacy Silverlight test code and resolve SonarQube warning
 * [#1109](https://github.com/marimerllc/csla/issues/1109) Add `ContextManager` property to `CslaConfiguration` fluent API
 * [#1111](https://github.com/marimerllc/csla/issues/1111) Update website URL to `https://cslanet.com` in source files
 * [#1119](https://github.com/marimerllc/csla/issues/1119) Update bootstrap version in ProjectTracker to resolve security warning
-* [#750](https://github.com/marimerllc/csla/issues/750) Updated editorconfig styles 
+* [#750](https://github.com/marimerllc/csla/issues/750) Updated editorconfig styles
 * [#1004](https://github.com/marimerllc/csla/issues/1004) Update use of test database so data tests run on developer workstations
 
 You can see all the [closed work items in GitHub](https://github.com/MarimerLLC/csla/issues?q=is%3Aissue+project%3AMarimerLLC%2Fcsla%2F5+is%3Aclosed).
@@ -83,6 +111,7 @@ You can see all the [closed work items in GitHub](https://github.com/MarimerLLC/
 I want to extend special recognition to the following contributors to this release:
 
 * [@JasonBock](https://github.com/JasonBock) has put a lot of work into the analyzers - fixing long-standing issues, and creating some cool new analyzers as well - really nice!
+* [@GillesBer](https://github.com/GillesBer) ported the Windows Forms and WPF satellite projects for use in .NET Core 3
 * [@itgoran](https://github.com/itgoran) has been helping ensure the tests all work
 * [@oatsoda](https://github.com/oatsoda) has been fixing some issues encountered in 4.9 - resulting in fixes 5.0
 * [@Hadronicus](https://github.com/Hadronicus) similarly has fixed an issue in 4.9 that's in 4.10 and 5.0
@@ -91,3 +120,4 @@ I want to extend special recognition to the following contributors to this relea
 * [@ajj7060](https://github.com/ajj7060) added features to authorization rules
 * [@dazinator](https://github.com/dazinator) and [@ajj7060](https://github.com/ajj7060) have been engaged in identifying issues and solutions
 * [@j055](https://github.com/j055) for data portal enhancements
+* [@TheCakeMonster](https://github.com/TheCakeMonster) for help building out Blazor support

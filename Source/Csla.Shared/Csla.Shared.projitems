@@ -34,6 +34,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Configuration\Fluent\ICslaConfiguration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Configuration\ICslaBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\AddedNewEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\ApplicationContextManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\AsyncFactoryDelegates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\BindableBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\BindingList.cs" />
@@ -109,14 +110,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\UndoableHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\UndoException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CriteriaBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataAnnotations\DisplayAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataAnnotations\RangeAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataAnnotations\RegularExpressionAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataAnnotations\RequiredAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataAnnotations\StringLengthAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataAnnotations\ValidationAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataAnnotations\ValidationContext.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataAnnotations\ValidationResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataPortal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataPortalClient\DataPortalProxyDescriptor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataPortalClient\DataPortalProxyFactory.cs" />
@@ -135,7 +128,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataPortalResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataPortalServerResourceAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataPortalServerRoutingTagAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataPortalFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataPortalT.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\ConnectionManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\ConnectionManagerT.cs" />
@@ -172,11 +164,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)MethodInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NameValueListBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NotUndoableAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectAuthorizationRulesAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PropertyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PropertyLoadException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReadOnlyBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReadOnlyBindingListBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReadOnlyListBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Reflection\AsyncManualResetEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Reflection\CallMethodException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Reflection\DynamicMemberHandle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Reflection\DynamicMethodHandle.cs" />
@@ -211,7 +205,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Rules\IHostRules.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rules\IRuleContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rules\ObjectRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Rules\ObjectRuleAsync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rules\PropertyRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Rules\PropertyRuleAsync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rules\RuleContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rules\RuleResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rules\RuleSeverity.cs" />
@@ -277,6 +273,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Server\DataPortalSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Server\DataPortalTarget.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Server\DefaultDataPortalActivator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Server\NullCriteria.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Server\EmptyCriteria.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Server\FactoryDataPortal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Server\GenericBusinessException.cs" />

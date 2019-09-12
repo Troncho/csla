@@ -63,6 +63,29 @@ namespace Csla.DataPortalClient
     }
 
     /// <summary>
+    /// Creates an instance of the object, initializing
+    /// it to use the supplied HttpClient object.
+    /// </summary>
+    /// <param name="httpClient">HttpClient instance</param>
+    public HttpProxy(HttpClient httpClient)
+    {
+      this.DataPortalUrl = HttpProxy.DefaultUrl;
+      _httpClient = httpClient;
+    }
+
+    /// <summary>
+    /// Creates an instance of the object, initializing
+    /// it to use the supplied HttpClient object and URL.
+    /// </summary>
+    /// <param name="httpClient">HttpClient instance</param>
+    /// <param name="dataPortalUrl">Server endpoint URL</param>
+    public HttpProxy(HttpClient httpClient, string dataPortalUrl)
+    {
+      _httpClient = httpClient;
+      DataPortalUrl = dataPortalUrl;
+    }
+
+    /// <summary>
     /// Gets a value indicating whether the data portal
     /// is hosted on a remote server.
     /// </summary>
@@ -174,7 +197,7 @@ namespace Csla.DataPortalClient
     /// <param name="isSync">True if the client-side proxy should synchronously invoke the server.</param>
     public async Task<DataPortalResult> Create(Type objectType, object criteria, DataPortalContext context, bool isSync)
     {
-      DataPortalResult result = null;
+      DataPortalResult result;
       try
       {
         var request = GetBaseCriteriaRequest();
@@ -231,7 +254,7 @@ namespace Csla.DataPortalClient
     public async Task<DataPortalResult> Fetch(Type objectType, object criteria, DataPortalContext context, bool isSync)
 #pragma warning restore 1998
     {
-      DataPortalResult result = null;
+      DataPortalResult result;
       try
       {
         var request = GetBaseCriteriaRequest();
@@ -287,7 +310,7 @@ namespace Csla.DataPortalClient
     public async Task<DataPortalResult> Update(object obj, DataPortalContext context, bool isSync)
 #pragma warning restore 1998
     {
-      DataPortalResult result = null;
+      DataPortalResult result;
       try
       {
         var request = GetBaseUpdateCriteriaRequest();
@@ -339,7 +362,7 @@ namespace Csla.DataPortalClient
     public async Task<DataPortalResult> Delete(Type objectType, object criteria, DataPortalContext context, bool isSync)
 #pragma warning restore 1998
     {
-      DataPortalResult result = null;
+      DataPortalResult result;
       try
       {
 
